@@ -1,2 +1,2 @@
 # GitTest
-Exploring how git works.
+Exploring how git works. Has changed.
