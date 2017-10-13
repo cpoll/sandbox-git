@@ -1,17 +1,17 @@
 # Delta circle.yml
 
 version: 2
+
+general:
+  branches:
+      ignore:
+          - master
+
 jobs:
   build:
     machine: true
     working_directory: /home/circleci/project
     steps:
-
-        - run:
-            name: setup environment
-            command: |
-                echo 'export BUILD_STACK_ID=circ$CIRCLE_BUILD_NUM' >> $BASH_ENV
-                echo "circ$CIRCLE_BUILD_NUM"
 
         - checkout
         
@@ -21,7 +21,7 @@ jobs:
                 ls ~/
         
         - restore_cache:
-            keys: 
+            keys: # Restores the first one it finds
                 - gittest-{{ .Branch }}
                 - gittest-master
         
@@ -34,12 +34,13 @@ jobs:
                 fi
         
         - run:
-            name: make cache
+            name: remake cache
             command: |
-                mkdir -p ~/mycache
+                rm -rf ~/mycache || :
+                mkdir ~/mycache
                 touch ~/mycache/$CIRCLE_BUILD_NUM
 
         - save_cache:
-            key: gittest-{{ .Branch }}-{{ epoch }}
+            key: gittest-{{ .Branch }}-{{ epoch }} # {{ epoch }} gets ignored when restoring above
             paths:
                 - "~/mycache"
