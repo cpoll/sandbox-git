@@ -34,9 +34,10 @@ jobs:
                 fi
         
         - run:
-            name: make cache
+            name: remake cache
             command: |
-                mkdir -p ~/mycache
+                -rm -rf ~/mycache
+                mkdir ~/mycache
                 touch ~/mycache/$CIRCLE_BUILD_NUM
 
         - save_cache:
