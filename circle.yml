@@ -18,7 +18,7 @@ jobs:
         - run:
             name: look at cache
             command: |
-                ls -a ~/
+                ls ~/
         
         - restore_cache:
             keys: 
@@ -28,18 +28,18 @@ jobs:
         - run:
             name: look at cache
             command: |
-                ls -a ~/
+                ls ~/
                 if [ -d "~/mycache" ]; then
-                    ls -a ~/mycache
+                    ls ~/mycache
                 fi
         
         - run:
             name: make cache
             command: |
-                mkdir -p ~/.mycache
-                touch ~/.mycache/$CIRCLE_BUILD_NUM
+                mkdir -p ~/mycache
+                touch ~/mycache/$CIRCLE_BUILD_NUM
 
         - save_cache:
             key: gittest-{{ .Branch }}-{{ epoch }}
             paths:
-                - "~/.mycache"
+                - "~/mycache"
