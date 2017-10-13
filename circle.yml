@@ -1,6 +1,12 @@
 # Delta circle.yml
 
 version: 2
+
+general:
+  branches:
+      ignore:
+          - master
+
 jobs:
   build:
     machine: true
