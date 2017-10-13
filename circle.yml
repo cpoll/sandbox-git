@@ -22,9 +22,8 @@ jobs:
         
         - restore_cache:
             keys: # Restores the first one it finds
-                - gittest
-                # - gittest-{{ .Branch }}
-                # - gittest-master
+                - gittest-{{ .Branch }}
+                - gittest-master
         
         - run:
             name: look at cache
@@ -43,7 +42,7 @@ jobs:
 
         - save_cache:
             key: gittest-{{ .Branch }}-{{ epoch }}
-              # {{ epoch }} termination gets ignored when restoring above 
+              # {{ epoch }} termination gets ignored when restoring above (each hyphen is one extra level of specificity)
               # {{ epoch }} equired to avoid 'Skipping cache generation, cache already exists'
             paths:
                 - "~/mycache"
