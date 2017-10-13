@@ -29,7 +29,7 @@ jobs:
             name: look at cache
             command: |
                 ls ~/
-                if [ -d "~/mycache" ]; then
+                if [ -d ~/mycache ]; then
                     ls ~/mycache
                 fi
         
