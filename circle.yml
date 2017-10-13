@@ -36,7 +36,7 @@ jobs:
         - run:
             name: remake cache
             command: |
-                -rm -rf ~/mycache
+                rm -rf ~/mycache || :
                 mkdir ~/mycache
                 touch ~/mycache/$CIRCLE_BUILD_NUM
 
