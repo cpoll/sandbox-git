@@ -22,8 +22,9 @@ jobs:
         
         - restore_cache:
             keys: # Restores the first one it finds
-                - gittest-{{ .Branch }}
-                - gittest-master
+                - gittest
+                # - gittest-{{ .Branch }}
+                # - gittest-master
         
         - run:
             name: look at cache
