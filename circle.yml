@@ -41,6 +41,8 @@ jobs:
                 touch ~/mycache/$CIRCLE_BUILD_NUM
 
         - save_cache:
-            key: gittest-{{ .Branch }} #-{{ epoch }} # {{ epoch }} gets ignored when restoring above
+            key: gittest-{{ .Branch }}-{{ epoch }}
+              # {{ epoch }} termination gets ignored when restoring above 
+              # {{ epoch }} equired to avoid 'Skipping cache generation, cache already exists'
             paths:
                 - "~/mycache"
