@@ -2,6 +2,6 @@
   "author": "a",
   "name": "b",
   "dependencies": {
-    "@formhero/fh-utils": "^3.5.2",
+    "@formhero/fh-utils": "^3.5.3",
   }
 }
